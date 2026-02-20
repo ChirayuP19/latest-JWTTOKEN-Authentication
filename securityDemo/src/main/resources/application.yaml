@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: securityDemo
+  security:
+    user:
+      name: admin
+      password: chirayu
+  datasource:
+    url: jdbc:postgresql://localhost:5432/securityddemo
+    username: postgres
+    password: Chirayu@1911
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  app:
+    jwtSecret: hYGfufhViLAeahV3RUlgiNY2SuwJjY2wVtB5L/QajzQ=
+    JwtExpirationMs: 360000

@@ -22,9 +22,9 @@ public class JwtUtils {
 
     private static final Logger log = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("{JwtExpirationMs}")
-    private long JwtExpirationMs;
-    @Value("{jwtSecret}")
+    @Value("${app.jwtExpirationMs}")
+    private long jwtExpirationMs;
+    @Value("${app.jwtSecret}")
     private String jwtSecret;
 
     public String getJwtFromHeader(HttpServletRequest request){
@@ -40,7 +40,7 @@ public class JwtUtils {
         return Jwts.builder()
                 .subject(username)
                 .issuedAt(new Date())
-                .expiration(new Date((new Date().getTime()+JwtExpirationMs)))
+                .expiration(new Date((new Date().getTime()+jwtExpirationMs)))
                 .signWith(key())
                 .compact();
     }

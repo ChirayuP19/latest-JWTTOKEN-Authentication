@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -21,6 +22,10 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
     private static final Logger log= LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
+
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         log.error("Unauthorized error {}",authException.getMessage());
@@ -33,7 +38,7 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
         body.put("path",request.getServletPath());
         body.put("localtimestamp", LocalDateTime.now());
 
-        final ObjectMapper mapper=new ObjectMapper();
-        mapper.writeValue(response.getOutputStream(),body);
+//        final ObjectMapper mapper=new ObjectMapper();
+        objectMapper.writeValue(response.getOutputStream(),body);
     }
 }

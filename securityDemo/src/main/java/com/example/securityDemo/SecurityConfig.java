@@ -59,8 +59,8 @@ public class SecurityConfig {
                 .password(passwordEncoder().encode("admin9")).roles("ADMIN").build();
 
         JdbcUserDetailsManager userDetailsManager=new JdbcUserDetailsManager(dataSource);
-        userDetailsManager.createUser(user1);
-        userDetailsManager.createUser(admin);
+//        userDetailsManager.createUser(user1);
+//        userDetailsManager.createUser(admin);
         return userDetailsManager;
     }
 

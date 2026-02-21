@@ -18,10 +18,10 @@ app:
   jwtSecret: hYGfufhViLAeahV3RUlgiNY2SuwJjY2wVtB5L/QajzQ=
   jwtExpirationMs: 360000
 
-logging:
-  level:
-    org:
-      springframework: debug
-      security: debug
-      securityDemo: debug
+#logging:
+#  level:
+#    org:
+#      springframework: debug
+#      security: debug
+#      securityDemo: debug
 
